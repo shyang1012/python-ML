@@ -81,7 +81,7 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
                     c=colors[idx],
                     marker=markers[idx], 
                     label=cl, 
-                    edgecolor='black')
+                    edgecolor=None)
     
     plt.xlabel('sepal length [cm]')
     plt.ylabel('petal length [cm]')
