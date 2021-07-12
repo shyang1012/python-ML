@@ -19,6 +19,10 @@ class AdalineGD(object):
     cost_ : list
       에포크마다 누적된 비용 함수의 제곱합
 
+    GD: Gradient Descent(경사하강법);  1차 근삿값 발견용 최적화 알고리즘이다. 
+    기본 개념은 함수의 기울기(경사)를 구하고 경사의 절댓값이 낮은 쪽으로 계속 이동시켜 
+    극값에 이를 때까지 반복시키는 것
+
     """
     def __init__(self, eta=0.01, n_iter=50, random_state=1):
         self.eta = eta
