@@ -17,7 +17,7 @@ class Perceptron(object):
     def __init__(self, eta=0.01, n_iter=50, random_state=1):
        self.eta= eta
        self.n_iter=n_iter
-       self.random_state = random_state
+       self.random_state = random_state # 튜토리얼 용으로, 언제나 동일한 결과를 출력하기 위함. 실제에선 필요 없음.
 
 
 
@@ -48,6 +48,7 @@ class Perceptron(object):
                 self.w_[0] += update #절편
                 errors += int(update != 0.0)
             self.errors_.append(errors)
+             # error는 iter의 각 단계에서 얼마나 error가 발생했는지 보기 위함.
         print(self.errors_)
         return self
     
@@ -55,6 +56,7 @@ class Perceptron(object):
         """입력 계산
             단위 계단 함수(unit step function) 또는 헤비사이드 계단 함수(Heaviside step function)은 
             0보다 작은 실수에 대해서 0, 0보다 큰 실수에 대해서 1, 0에 대해서 1/2의 값을 갖는 함수
+            np.dot(a,b) : a,b 행렬의 곱. 내적값 --> a.dot(b) == np.dot(a,b)
         Args:
             x: n_samples개의 샘플과 n_features개의 특성으로 이루어진 훈련 데이터
 
@@ -65,13 +67,13 @@ class Perceptron(object):
 
     def predict(self, x):
         """단위 계단 함수를 사용하여 클래스 레이블 반환
+           np.where(a, b, c) : 조건 a에 따라 b,c로 결과값 할당
         Args:
             x: n_samples개의 샘플과 n_features개의 특성으로 이루어진 훈련 데이터
-
         Returns:
             [int]: 클래스 레이블
         """
-       
+    
         result = np.where(self.net_input(x) >= 0.0, 1, -1)
         # print("예측 데이터",x, "예측 결과:", result)
         return result
