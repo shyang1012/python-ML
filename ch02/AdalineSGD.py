@@ -64,7 +64,8 @@ class AdalineSGD(object):
 
     def partial_fit(self, X, y):
         """가중치를 다시 초기화하지 않고 훈련 데이터를 학습합니다
-
+            스트리밍 데이터를 사용하는 혼라인 학습방식으로 모델을 훈련하려면 개개의 
+            샘플마다 partial_fit 메소드 호출
         Args:
              X ({array-like}, shape = [n_samples, n_features]): n_samples 개의 샘플과 n_features 개의 특성으로 이루어진 훈련 데이터
              y (array-like, shape = [n_samples]): 타깃 벡터

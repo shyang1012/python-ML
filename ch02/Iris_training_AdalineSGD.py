@@ -105,4 +105,9 @@ if __name__ == '__main__':
     ada_sgd = ada.AdalineSGD(n_iter=15, eta=0.01)
     ada_sgd.fit(X_std, y)
     
+    #실시간 스트라밍데이터를 훈련하는 경우 partial_fit 메소드 활용
+    print(ada_sgd.partial_fit(X_std[0, :], y[0]))
+
     plot_decision_regions(X_std, y, classifier=ada_sgd)
+
+   
