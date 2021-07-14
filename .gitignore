@@ -4,3 +4,5 @@ __pycache__
 *.lock
 Pipfile
 .vscode
+build
+*.egg
