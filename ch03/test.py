@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager, rc
 import numpy as np
 import os
+from scipy.special import expit
 
 
 def sigmoid(z):
@@ -23,7 +24,8 @@ def sigmoid(z):
       위험인자에 노출되지 않은 사람 중에서 암환자인 오즈값 c/d = Odds2
       OR = Odds1 / Odds2  = (a/b) / (c/d)
     오즈비는 샘플링에서 생길 수 있는 Bias를 최소화하여, 통계적 의미를 강화
-      
+    
+    시그모이드는 오즈비에 자연 log를 취한 값이다.
 
     Args:
         z : 가중치와 입력(training samples's feature)의 선형조합으로 이루어진 
@@ -55,7 +57,8 @@ if __name__ == '__main__':
     rc('font', family="New Gulim")
 
     z = np.arange(-7, 7, 0.1)
-    phi_z = sigmoid(z)
+    # phi_z = sigmoid(z)
+    phi_z = expit(z)
     plt.plot(z, phi_z)
     plt.axvline(0.0, color='k')
     plt.ylim(-0.1, 1.1)
@@ -71,7 +74,8 @@ if __name__ == '__main__':
     plt.close()
 
     z = np.arange(-10, 10, 0.1)
-    phi_z = sigmoid(z)
+    # phi_z = sigmoid(z)
+    phi_z = expit(z)
     c1 = [cost_1(x) for x in z]
     plt.plot(phi_z, c1, label='J(w) y=1 일때')
     c0 = [cost_0(x) for x in z]
