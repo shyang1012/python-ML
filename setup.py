@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.1",
     author="shyang",
     author_email="disroway@chungbuk.ac.kr",
-    description="머신러닝교과서 with 파이썬",
+    description="머신러닝교과서 with 파이썬을 공부하기 위한 프로젝트",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/shyang1012/python-ML",
