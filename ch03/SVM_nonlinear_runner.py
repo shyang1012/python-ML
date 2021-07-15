@@ -3,7 +3,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import *
 from sklearn.svm import *
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import *
+from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
 import os
 import sys
@@ -55,7 +56,10 @@ if __name__ == '__main__':
     print('잘못 분류된 샘플 개수: %d' % (y_test != y_pred).sum())
     print("정확도 %.3f" % accuracy_score(y_test, y_pred))
     print("정확도 %.3f" % svm.score(X_test_std, y_test))
-    print("confution matrix \n",confusion_matrix(y_test, y_pred))
+
+    target_names = ['Iris Setosa', 'Iris Versicolour', 'Iris Virginica']
+    print("confution matrix \n",multilabel_confusion_matrix(y_test, y_pred,labels=[0, 1, 2]))
+    print(classification_report(y_test,y_pred, target_names=target_names))
 
     X_combined_std = np.vstack((X_train_std, X_test_std))
     y_combined_std = np.hstack((y_train, y_test))
