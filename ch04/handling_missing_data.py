@@ -64,7 +64,7 @@ if __name__ == '__main__':
     kimr =KNNImputer()
     print("KNNImputer\n",kimr.fit_transform(df.values))
 
-    print("평균으로 결측값 채우기\n", df.mean())
+    print("평균으로 결측값 채우기\n", df.fillna(df.mean()))
     print("평균으로 결측값 채우기(행) bfill method='backfill'\n", df.fillna(method='bfill'))
     print("평균으로 결측값 채우기(행) ffill method='pad'\n", df.fillna(method='pad'))
     print("평균으로 결측값 채우기(열) bfill method='backfill'\n", df.fillna(method='bfill', axis=1))
