@@ -65,7 +65,7 @@ if __name__ == '__main__':
     print("KNNImputer\n",kimr.fit_transform(df.values))
 
     print("평균으로 결측값 채우기\n", df.fillna(df.mean()))
-    print("평균으로 결측값 채우기(행) bfill method='backfill'\n", df.fillna(method='bfill'))
-    print("평균으로 결측값 채우기(행) ffill method='pad'\n", df.fillna(method='pad'))
-    print("평균으로 결측값 채우기(열) bfill method='backfill'\n", df.fillna(method='bfill', axis=1))
+    print("평균으로 결측값 채우기(행) bfill method='backfill'\n", df.fillna(method='bfill')) # 누락된 값을 다음 행의 값으로 채움
+    print("평균으로 결측값 채우기(행) ffill method='pad'\n", df.fillna(method='pad')) # 이전 행의 값을 채움
+    print("평균으로 결측값 채우기(열) bfill method='backfill'\n", df.fillna(method='ffill', axis=1)) # 이전 열의 값으로 누락값 채움
     print("평균으로 결측값 채우기(열) ffill method='pad'\n", df.fillna(method='pad', axis=1))
