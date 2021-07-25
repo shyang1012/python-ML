@@ -102,16 +102,21 @@ def main():
                         SVC(random_state=1))
     pipe_svc.fit(X_train, y_train)
     y_pred = pipe_svc.predict(X_test)
-    
-   
+    confmat = confusion_matrix(y_true=y_test, y_pred = y_pred, labels=[1, 0])
+    tp, fn, fp, tn = confmat[0,0], confmat[0,1], confmat[1,0], confmat[1,1]
     
     print('Precision(정밀도): %.3f' % precision_score(y_true=y_test, y_pred=y_pred))
     print('Recall(재현율): %.3f' % recall_score(y_true=y_test, y_pred=y_pred))
+    print("Specificity(특이도):%.3f" % (tn/(tn+fp)))
+    print("Sesitivity(민감도):%.3f" % (tp/(tp+fn)))
     print('F1-score(precision 과 recall의 조화평균): %.3f' % f1_score(y_true=y_test, y_pred=y_pred))
-    print('Accuracy(예측정확도): %.3f' % accuracy_score(y_true=y_test, y_pred=y_pred))
-    confmat = confusion_matrix(y_true=y_test, y_pred = y_pred, labels=[1, 0])
+    # print('Accuracy(예측정확도;ACC): %.3f' % ((tp + tn) / (tp + fn + fp + tn)))
+    print('Accuracy(예측정확도;ACC): %.3f' % accuracy_score(y_true=y_test, y_pred=y_pred))
     print("Confusion Matrix")
     print(confmat)
+    print(confmat[0,0])
+  
+
 
     scorer = make_scorer(f1_score, pos_label=0)
 
