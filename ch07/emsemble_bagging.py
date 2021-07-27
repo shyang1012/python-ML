@@ -8,7 +8,7 @@ from sklearn.model_selection import *
 import matplotlib.pyplot as plt
 import os
 """
-배깅: 부트스르랩 샘플링을 통한 분류 앙상블
+배깅: 부트스트랩 샘플링을 통한 분류 앙상블
 앙상블에 있는 개별 분류기를 동일한 훈련 데이터셋으로 학습하는 것이 아니라 원본 훈련데이터셋에서
 부트스트랩(bootstrap) 샘플(중복을 허용한 랜덤 샘플)을 뽑아서 사용
 배깅은 bootstrap aggregating이라고도 함.
