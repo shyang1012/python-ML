@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
     cmmnUtils = CmnUtils()
 
-    cmmnUtils.plot_decision_regions(X=X_xor, y= y_xor, classifier=svm, test_idx=range(105, 150))
+    cmmnUtils.plot_decision_regions_with_test_marker(X=X_xor, y= y_xor, classifier=svm, test_idx=range(105, 150))
     plt.legend(loc='upper left')
 
     plt.tight_layout()

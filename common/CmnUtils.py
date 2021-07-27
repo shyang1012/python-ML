@@ -5,7 +5,7 @@ import numpy as np
 
 class CmnUtils(object):
     
-    def plot_decision_regions(self, X, y, classifier, test_idx=None, resolution=0.02):
+    def plot_decision_regions_with_test_marker(self, X, y, classifier, test_idx=None, resolution=0.02):
         
         # 마커와 컬러맵을 설정합니다.
         markers = ('s', 'x', 'o', '^', 'v')

@@ -62,7 +62,7 @@ if __name__ == '__main__':
 
     cmmnUtils = CmnUtils()
 
-    cmmnUtils.plot_decision_regions(X=X_combined_std, y= y_combined_std, classifier=svm, test_idx=range(105, 150))
+    cmmnUtils.plot_decision_regions_with_test_marker(X=X_combined_std, y= y_combined_std, classifier=svm, test_idx=range(105, 150))
     plt.xlabel('petal length [standardized]')
     plt.ylabel('petal width [standardized]')
     plt.legend(loc='upper left')
