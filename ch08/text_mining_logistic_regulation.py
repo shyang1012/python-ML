@@ -98,8 +98,9 @@ if __name__ == '__main__':
 
     gs_lr_tfidf = GridSearchCV(lr_tfidf, param_grid,
                             scoring='accuracy',
-                            cv=5,
-                            n_jobs=-1)
+                            cv=5
+                            # ,n_jobs=-1
+                            )
     gs_lr_tfidf.fit(X_train, y_train)
 
     print('최적의 매개변수 조합: %s ' % gs_lr_tfidf.best_params_)
