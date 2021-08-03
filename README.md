@@ -21,6 +21,9 @@
 17. 새로운 데이터 합성을 위한 생성적 적대 신경망
 18. 강화 학습으로 복잡한 환경에서 의사 결정
 
+## 추천 파이썬 버전
+* Python 3.7.X
+* 특히 Jptype1 패키지의 문제 때문에 3.9.X 설치는 권장하지 않습니다.
 
 ## 설치 해야하는 패키지
 * 최신버전의 사이킷 런 설치
@@ -51,6 +54,17 @@ pip install tensorflow
 ```
 pip install pydotplus
 ```
+
+* JPype1 설치
+```
+pip install jpype1==0.7.0
+```
+* konlpy 설치
+```
+pip install konlpy
+```
+
+
 * graphviz 설치
     - 설치를 위해 방문해야 하는 페이지는 https://graphviz.org/download/ 이다.
     - 리눅스 환경에서는 다음과 같이 할 수 있다.
