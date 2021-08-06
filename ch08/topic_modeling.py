@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.feature_extraction.text import *
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 import os
 import re
@@ -24,7 +24,7 @@ def get_base_dir(path):
         os.makedirs(result)
     return result
 
-def preprocesser(text):
+def preprocessor(text):
     text = re.sub('<[^>]*>','', text)
     emoticons = re.findall('(?::|;|=)(?:-)?(?:\)|\(|D|P)', text)
     text = (re.sub('[\W]+', ' ', text.lower()) +' '.join(emoticons).replace('-', ''))
@@ -32,9 +32,14 @@ def preprocesser(text):
 
 def load_movie_review():
     df = pd.read_csv(get_base_dir('data')+'/movie_data.csv', encoding='utf-8')
-    df['review'] = df['review'].apply(preprocesser)
+    df['review'] = df['review'].apply(preprocessor)
     print(df.head(3))
     return df
+
+def get_topics(components, feature_names, n=5):
+    for idx, topic in enumerate(components):
+        print("Topic %d:" % (idx+1), [(feature_names[i], topic[i].round(2)) for i in topic.argsort()[:-n - 1:-1]])
+
 
 if __name__ == '__main__':
     df = load_movie_review()
@@ -53,11 +58,8 @@ if __name__ == '__main__':
     n_top_words = 5
     feature_names = count.get_feature_names()
 
-    for topic_idx, topic in enumerate(lda.components_):
-        print("Topic %d:" % (topic_idx + 1))
-        print(" ".join([feature_names[i]
-                        for i in topic.argsort()\
-                            [:-n_top_words - 1:-1]]))
+    get_topics(lda.components_, feature_names, n_top_words)
+    
     
     horror = X_topics[:, 5].argsort()[::-1]
     for iter_idx, movie_idx in enumerate(horror[:3]):
