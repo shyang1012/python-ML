@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.feature_extraction.text import *
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 import os
 import re
@@ -24,7 +24,7 @@ def get_base_dir(path):
         os.makedirs(result)
     return result
 
-def preprocesser(text):
+def preprocessor(text):
     text = re.sub('<[^>]*>','', text)
     emoticons = re.findall('(?::|;|=)(?:-)?(?:\)|\(|D|P)', text)
     text = (re.sub('[\W]+', ' ', text.lower()) +' '.join(emoticons).replace('-', ''))
@@ -32,7 +32,7 @@ def preprocesser(text):
 
 def load_movie_review():
     df = pd.read_csv(get_base_dir('data')+'/movie_data.csv', encoding='utf-8')
-    df['review'] = df['review'].apply(preprocesser)
+    df['review'] = df['review'].apply(preprocessor)
     print(df.head(3))
     return df
 
