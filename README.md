@@ -63,7 +63,10 @@ pip install jpype1==0.7.0
 ```
 pip install konlpy
 ```
-
+* pickle 설치
+```
+pip install pickle-mixin
+```
 
 * graphviz 설치
     - 설치를 위해 방문해야 하는 페이지는 https://graphviz.org/download/ 이다.
