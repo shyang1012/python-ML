@@ -1,6 +1,6 @@
 {%extends 'base.html'%}
-
 {%block content%}
+
 <div class="container">
     <h5 class="my-3 border-bottom pb-2">질문 등록</h5>
     <form method="post" class="post-from my-3">
@@ -29,3 +29,11 @@
     </form>
 </div>
 {%endblock%}
+{% block script %}
+
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+    const mde = new SimpleMDE({ element: document.getElementById("content") });
+});
+</script>
+{% endblock %}
