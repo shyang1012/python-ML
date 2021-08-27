@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%block content%}
+<main class="container">
+    <article>
+        <h5 class="my-3 border-bottom pb-2">영화 분류</h5>
+        <form method="post" class="post-from my-3">
+            {% csrf_token %}
+            <!--오류표시 Start-->
+            {%if form.errors%}
+            <div class="alert alert-danger" role="alert">
+                {%for field in form%}
+                    {%if field.errors%}
+                        <strong>{{field.label}}</strong>
+                        {{field.errors}}
+                    {%endif%}
+                {%endfor%}
+            </div>
+        {%endif%}
+        <!--오류표시 End-->
+        <div class="form-group">
+            <label for="review">리뷰</label>
+            <textarea name="review" id="review" class="form-control" rows="10">{{ form.review.value|default_if_none:'' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">저장하기</button>
+        </form>
+    </article>
+</main>
+{%endblock%}
+{% block script %}
+
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+    const mde = new SimpleMDE({ element: document.getElementById("review") });
+});
+</script>
+{% endblock %}

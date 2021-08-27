@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load review_filter %}
+{%block content%}
+<div class="container my-3">
+    <div class="col-11">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-text" style="white-space: pre-line;">{{ movieReview.review|mark }}</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                {% if movieReview.sentiment == 1 %}
+                긍정
+            {%else%}
+                부정
+            {%endif%}
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

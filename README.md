@@ -85,3 +85,9 @@ pip install konlpy
         sudo yum install graphviz
         ```
 
+* ch09 실행 시 명령어 옵션
+  - Debug 설정을 False로 한 경우 다음과 같이 명령어를 입력해야 static에 있는 내용을 실행 가능하다.
+  ```
+  python3 manage.py runserver --insecure
+  ```
+
