@@ -1,0 +1,11 @@
+scikit-learn
+numpy
+scipy
+matplotlib
+pandas
+tensorflow
+pydotplus
+jpype1==0.7.0
+konlpy
+pickle-mixin
+Django==3.2.5
