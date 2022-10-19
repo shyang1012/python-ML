@@ -3,9 +3,10 @@ numpy
 scipy
 matplotlib
 pandas
-tensorflow
+#tensorflow
 pydotplus
 jpype1==0.7.0
 konlpy
 pickle-mixin
 Django==3.2.5
+tensorflow-cpu
